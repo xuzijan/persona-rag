@@ -1,0 +1,23 @@
+# PersonaRAG Baseline 配置
+# 超参数不进代码，统一由此文件管理
+
+experiment:
+  name: persona_rag_paper_repro
+  seed: 42
+
+model:
+  handle: "gpt-4"
+  temperature: 0.2
+  max_tokens: 16385
+  enable_trimming: false
+
+data:
+  dir: "data"
+  pattern: "data_{dataset}_sampled.jsonl"
+  datasets: ["nq", "webq", "triviaqa"]
+  default_dataset: "nq"
+  default_topk: 5
+
+logs:
+  dir: "logs"
+  pattern: "{model}/{dataset}/top{topk}"

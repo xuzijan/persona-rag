@@ -43,7 +43,11 @@ class Agent:
 
     def init_api_client(self):
         if self.model.startswith("gpt"):
-            self.api_client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+            kwargs = {"api_key": os.getenv("OPENAI_API_KEY")}
+            base_url = os.getenv("OPENAI_BASE_URL")
+            if base_url:
+                kwargs["base_url"] = base_url.rstrip("/")
+            self.api_client = openai.OpenAI(**kwargs)
         elif self.model == "llama3":
             self.api_client = openai.OpenAI(
                 api_key=os.getenv("LLAMA_API_KEY"),

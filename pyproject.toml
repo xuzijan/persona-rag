@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "PersonaRAG"
 version = "0.1.0"
+packages = [{include = "persona_rag"}]
 description = ""
 authors = ["Saber Zerhoudi <saber.zerhoudi@uni-passau.de>"]
 readme = "README.md"
